@@ -75,7 +75,7 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeThree(String fileName) throws IOException {
-        String[] commands = new String(Files.readAllBytes(new File(fileName).toPath())).split("\n");
+        String[] commands = readFileTwo(fileName);
         int depth = 0;
         int horizontal = 0;
         for (int i = 0; i < commands.length; i++) {
@@ -105,7 +105,7 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeFour(String filename) throws FileNotFoundException, IOException {
-        String[] commands = new String(Files.readAllBytes(new File(filename).toPath())).split("\n");
+        String[] commands = readFileTwo(filename);
         int depth = 0;
         int horizontal = 0;
         int aim = 0;
@@ -156,6 +156,10 @@ public class AdventureTime {
         }
         scanner.close();
         return data;
+    }
+
+    private static String[] readFileTwo(String inputFilename) throws FileNotFoundException, IOException {
+        return new String(Files.readAllBytes(new File(inputFilename).toPath())).split("\n");
     }
 
     /**
